@@ -38,7 +38,7 @@ void delays_ms(u16 n)
     */  
 void INIT_CPU(void)
 {
-    EA=0;
+    EA=0; // запретить глобальные прерывания
     RS0=0;
     RS1=0;
     //SP=0xC0;
