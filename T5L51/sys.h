@@ -13,10 +13,10 @@ typedef int             s32;
 
 
 
-//∫Í∂®“Â
-#define	WDT_ON()	MUX_SEL|=0x02		/******ø™∆Ùø¥√≈π∑*********/
-#define	WDT_OFF()	MUX_SEL&=0xFD		/******πÿ±’ø¥√≈π∑*********/
-#define	WDT_RST()	MUX_SEL|=0x01		/******Œππ∑*********/
+//–æ–ø—Ä–µ–¥–µ–ª–µ–Ω–∏–µ –º–∞–∫—Ä–æ—Å–∞
+#define	WDT_ON()	MUX_SEL|=0x02		/******enable watchdog*********/
+#define	WDT_OFF()	MUX_SEL&=0xFD		/******turn off watchdog*********/
+#define	WDT_RST()	MUX_SEL|=0x01		/******feed the dog*********/
 
 
 #define FOSC     206438400UL
