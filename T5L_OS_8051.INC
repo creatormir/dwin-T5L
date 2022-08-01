@@ -1,6 +1,7 @@
-;����T5L ASIC OS 8051 ��SFR�ӿڶ���
+;Defin T5L ASIC OS 8051 core SFR interface definition
+;определение интерфейса SFR ядра T5L ASIC OS 8051
 
-;*******************8051 ��SFR****************
+;******************* SFR(Special Function Registers) ядра 8051  ****************
                 $NOMOD51                
         P0		DATA	80H
 	SP		DATA	81H
@@ -26,8 +27,8 @@
 	P1		DATA	90H
 
 	DPC		DATA	93H
-	PAGESEL		DATA	94H	;������0x01
-	D_PAGESEL	DATA	95H	;������0x02
+	PAGESEL		DATA	94H	;Должно быть 0x01
+	D_PAGESEL	DATA	95H	;Должно быть 0x02
 
 	SCON0		DATA	98H	;UART2
 			TI0	BIT	SCON0.1
@@ -84,8 +85,8 @@
 	ACC		DATA	0E0H
 	B		DATA	0F0H
 
-;***********************Ӳ����չ����******************
-	;DGUS�����洢������
+;***********************Определение аппаратного расширения******************
+	;Доступ к RAM(переменной памяти) DGUS
 	RAMMODE	DATA	0F8H
 		APP_REQ	BIT	RAMMODE.7
 		APP_EN	BIT	RAMMODE.6
@@ -116,7 +117,7 @@
 	SBUF3_TX	DATA	0ACH
 	SBUF3_RX	DATA	0ADH
 
-	;CAN�ӿ�
+	;CAN interface
 	CAN_CR	DATA	08FH
 	CAN_IR	DATA	091H
 	CAN_ET	DATA	0E8H
@@ -127,25 +128,25 @@
 	P2MDOUT	DATA	0BDH
 	P3MDOUT	DATA	0BEH
 	MUX_SEL	DATA	0C9H
-	PORTDRV	DATA	0F9H		;�������ǿ��
+	PORTDRV	DATA	0F9H		;мощность выходного привода
 
 	;MAC&DIV
 	MAC_MODE DATA	0E5H
 	DIV_MODE DATA	0E6H
 
-	;SFR��չ�ӿ�
+	;SFR Порты расширения
 	EXADR	DATA	0FEH
 	EXDATA	DATA	0FFH 
         
-        ;����Ϊ�궨���αָ��
-        WDT_ON  MACRO                           ;WDT����
+        ;Ниже приведены псевдоинструкции, определяемые макросами.
+        WDT_ON  MACRO                           ;WDT включен
                 ORL     MUX_SEL,#02H
                 ENDM
 
-        WDT_OFF MACRO                           ;WDT�ر�
+        WDT_OFF MACRO                           ;WDT выключен
                 ANL     MUX_SEL,#0FDH
                 ENDM
 
-        WDT_RST MACRO                           ;WDT��λ��ι����
+        WDT_RST MACRO                           ;WDT reset (feed the dog) / Сброс WDT (покормить собаку)
                 ORL     MUX_SEL,#01H
                 ENDM
