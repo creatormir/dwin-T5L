@@ -22,9 +22,9 @@ typedef int             s32;
 #define FOSC     206438400UL
 #define T1MS    (65536-FOSC/12/1000)
 
-sbit P3_2=P3^2;
-sbit P1_0=P1^0;
-sbit P1_1=P1^1;
+sbit P3_2=P3^2; // порт 3 пин 2
+sbit P1_0=P1^0; // порт 1 пин 0
+sbit P1_1=P1^1; // порт 1 пин 1
 
 
 extern u16 count;
